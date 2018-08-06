@@ -1,6 +1,10 @@
 def isPrime(number):
-	if number == 2:
-		return True
-	if number > 2 and number%2 == 1:
-		return True
-	return False
+	if number == 1:
+		return False
+
+	if number > 2:
+		for i in range(2, number):
+			if number%i==0:
+				return False
+	
+	return True
