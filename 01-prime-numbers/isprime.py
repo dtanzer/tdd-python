@@ -1,2 +1,4 @@
 def isPrime(number):
-	return True
+	if number == 2:
+		return True
+	return False
