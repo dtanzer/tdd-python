@@ -9,5 +9,8 @@ class TestStringMethods(unittest.TestCase):
 	def test_one_is_not_prime(self):
 		self.assertFalse(isprime.isPrime(1))
 
+	def test_three_is_prime(self):
+		self.assertTrue(isprime.isPrime(3))
+
 if __name__ == '__main__':
 	unittest.main()
