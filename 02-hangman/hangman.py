@@ -17,7 +17,8 @@ class Hangman:
 
 	def guess_letter(self, letter):
 		self._letter+=letter
-		self.incorrect_guesses+=1
+		if(not letter in self._word):
+			self.incorrect_guesses+=1
 		
 
 if __name__=="__main__":

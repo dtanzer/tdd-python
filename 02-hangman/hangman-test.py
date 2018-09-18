@@ -54,5 +54,13 @@ class TestHangman(unittest.TestCase):
 
 		self.assertEqual(game.incorrect_guesses, last_incorrect_guesses + 1)
 
+	def test_does_not_count_failures_when_letter_is_correctly_guessed(self):
+		game = Hangman('a')
+		last_incorrect_guesses = game.incorrect_guesses
+
+		game.guess_letter('a')
+
+		self.assertEqual(game.incorrect_guesses, last_incorrect_guesses)
+
 if __name__ == '__main__':
 	unittest.main(verbosity=2)
