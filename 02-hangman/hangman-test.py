@@ -62,5 +62,37 @@ class TestHangman(unittest.TestCase):
 
 		self.assertEqual(game.incorrect_guesses, last_incorrect_guesses)
 
+	def test_game_is_running_after_startup(self):
+		game = Hangman('a')
+
+		self.assertEqual(game.get_status(), 'Running')
+
+	def test_game_is_lost_when_guessed_incorrectly_for_11_times(self):
+		game = Hangman('a')
+
+		for _ in range(11):
+			game.guess_letter('b')
+
+		self.assertEqual(game.get_status(), 'Lost')
+
+	def test_game_is_NOT_lost_when_guessed_incorrectly_for_10_times(self):
+		game = Hangman('a')
+
+		for _ in range(10):
+			game.guess_letter('b')
+
+		self.assertEqual(game.get_status(), 'Running')
+	
+	def test_game_is_won_when_all_guessed_correctly(self):
+		game = Hangman('abbc')
+
+		game.guess_letter('a')
+		game.guess_letter('b')
+		game.guess_letter('c')
+
+		self.assertEqual(game.get_status(), 'Won')
+
+
+
 if __name__ == '__main__':
 	unittest.main(verbosity=2)
