@@ -3,6 +3,7 @@ class Hangman:
 		self._word=word
 		self._letter=str()
 		self.incorrect_guesses = 0
+		self._status = 'Running'
 
 	def render_hint(self):
 		output = str()
@@ -17,9 +18,17 @@ class Hangman:
 
 	def guess_letter(self, letter):
 		self._letter+=letter
-		if(not letter in self._word):
+		if not letter in self._word:
 			self.incorrect_guesses+=1
+
+		if self.incorrect_guesses >= 11:
+			self._status = 'Lost'
 		
+		if '.' not in self.render_hint():
+			self._status = 'Won'
+	
+	def get_status(self):
+		return self._status
 
 if __name__=="__main__":
-	A=Hangman()
+	A=Hangman('The')
